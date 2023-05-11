@@ -1,0 +1,63 @@
+#include<stdio.h>
+#include<string.h>
+typedef struct{
+    char palabra[10];
+} palabras;
+int contadorv(char[]);
+int contadorc(char[]);
+int main(){
+    int x, i, espacios=1, vocales, j=0, k=0, l, c;
+    int vo, cons;
+    char cadena[100], *b;
+    printf("Ingresa una cadena de texto: ");
+    fflush(stdin);
+    gets(cadena);
+    x=strlen(cadena);
+    b=&cadena;
+    vo=contadorv(b);
+    cons=contadorc(b);
+    for(i=1;i<x;i++){
+        if(cadena[i]==' ')
+            espacios++;
+    }
+    palabras words[espacios];
+    for(i=0;i<=x;i++){
+       if (cadena[i]!=' '){
+        words[j].palabra[k]=cadena[i];
+        k++;
+       }
+       else {
+            k=0;
+            j++;
+
+       }
+    }
+    for(i=espacios;i>=0;i--){
+            c=strlen(words[i].palabra);
+            for(l=0;l<c;l++){
+            printf("%c", words[i].palabra[l]);
+            }
+            printf(" ");
+
+    }
+    printf("\nLa cadena tiene %d palabras con %d consonantes y %d vocales", espacios, cons, vo);
+    return 0;
+}
+int contadorv(char cadena[]){
+    int i, x, c=0;
+    x=strlen(cadena);
+    for(i=0;i<x;i++){
+        if(cadena[i]=='a'||cadena[i]=='e'||cadena[i]=='i'||cadena[i]=='o'||cadena[i]=='u'||cadena[i]=='A'||cadena[i]=='E'||cadena[i]=='I'||cadena[i]=='O'||cadena[i]=='U')
+            c++;
+    }
+    return c;
+    }
+int contadorc(char cadena[]){
+    int i, x, c=0;
+    x=strlen(cadena);
+    for(i=0;i<x;i++){
+        if(cadena[i]!=' '&&cadena[i]!='a'&&cadena[i]!='e'&&cadena[i]!='i'&&cadena[i]!='o'&&cadena[i]!='u'&&cadena[i]!='A'&&cadena[i]!='E'&&cadena[i]!='I'&&cadena[i]!='O'&&cadena[i]!='U')
+            c++;
+    }
+    return c;
+}
